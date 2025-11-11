@@ -71,7 +71,8 @@ data-warehouse-project/
 │   │   └── proc_load_bronze.sql        # Procedure for loading raw data into bronze layer
 │   │
 │   ├── silver/                         # Scripts for transforming and cleaning data (silver layer)
-│   │   └── (empty or future SQL scripts)
+│   │   ├── ddl_silver.sql
+        └── proc_load_silver.sql
 │   │
 │   ├── gold/                           # Scripts for creating curated analytical (gold) layer tables
 │   │   └── ddl_gold.sql                # DDL script for defining gold layer tables
