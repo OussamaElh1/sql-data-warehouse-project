@@ -61,25 +61,28 @@ Develop SQL-based analytics to deliver detailed insights into:
 ```
 data-warehouse-project/
 │
-├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
+├── datasets/                           # Source data folders used for ingestion
+│   ├── source_crm/                     # Contains CRM (Customer Relationship Management) raw data
+│   └── source_erp/                     # Contains ERP (Enterprise Resource Planning) raw data
 │
-├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
-│   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
+├── scripts/                            # SQL scripts for database setup and ETL processing
+│   ├── bronze/                         # Scripts for creating and loading raw (bronze) layer tables
+│   │   ├── ddl_bronze.sql              # DDL script for defining bronze tables
+│   │   └── proc_load_bronze.sql        # Procedure for loading raw data into bronze layer
+│   │
+│   ├── silver/                         # Scripts for transforming and cleaning data (silver layer)
+│   │   └── (empty or future SQL scripts)
+│   │
+│   ├── gold/                           # Scripts for creating curated analytical (gold) layer tables
+│   │   └── ddl_gold.sql                # DDL script for defining gold layer tables
+│   │
+│   └── init_database.sql               # Script for initializing database and schema setup
 │
-├── scripts/                            # SQL scripts for ETL and transformations
-│   ├── bronze/                         # Scripts for extracting and loading raw data
-│   ├── silver/                         # Scripts for cleaning and transforming data
-│   ├── gold/                           # Scripts for creating analytical models
+├── tests/                              # SQL scripts for data validation and quality assurance
+│   ├── quality_checks_gold.sql         # Quality tests for gold layer data
+│   └── quality_checks_silver.sql       # Quality tests for silver layer data
 │
-├── tests/                              # Test scripts and quality files
-│
-├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
+├── LICENSE                             # License information for the project
+├── README.md                           # Project overview and setup instructions
+
 ---
